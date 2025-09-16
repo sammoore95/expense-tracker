@@ -46,6 +46,7 @@ def select_category(input):
     expense_categories = get_categories()
     return expense_categories[input-1]  # translates user input into selection
 
+
 def validate_category_selection():
     """Validates user input is a number in the category list, returns category selection (int)"""
     expense_categories = get_categories()
@@ -58,12 +59,25 @@ def validate_category_selection():
         else:
             print("Please enter a valid category number")
 
-    
+
+def upload_expense(expense):
+    try:
+        with open("expenses.json", "r") as f:
+            expense_list = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        expense_list = []
+
+    expense_list.append(expense)
+
+    with open("expenses.json", "w") as f:
+        json.dump(expense_list, f, indent=4)
+        
+ 
 def add_expense():
     """Adds expense to expenses.json file, and updates budget"""
     expense_name = input("Enter expense name: ")
-    expense_amount = str(check_for_decimal("Enter amount ($)"))
-    get_categories()
+    expense_amount = float(check_for_decimal("Enter amount ($): "))
+    print(get_categories()) #need to still print category numbers
     expense_category = validate_category_selection()
     category_selection = select_category(expense_category)
     merchant = input("Enter Merchant: ")
@@ -71,6 +85,14 @@ def add_expense():
     today = date.today()
     formated_date = today.strftime("%Y-%m-%d")
 
-    expense_dict =  {"id":expense_name, "date":formated_date, "amount":expense_amount, "category":category_selection, "merchant":merchant, "note":note}
-    # still need to add sent to json file function
-    # still need to perform budget calculations
+    expense_dict =  {"id":expense_name, 
+                     "date":formated_date, 
+                     "amount":expense_amount, 
+                     "category":category_selection, 
+                     "merchant":merchant, 
+                     "note":note}
+    
+
+    
+
+
