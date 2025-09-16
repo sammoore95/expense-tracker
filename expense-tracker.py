@@ -41,6 +41,15 @@ def get_categories():
     return expense_settings["categories"]
 
 
+def show_categories():
+    """Prints categories and translates category indexes to inputs that will be intuitive for the user"""
+    expense_categories = get_categories()
+
+    print("Expense categories:")
+    for i in range(len(expense_categories)):
+        print(f"{i+1}. {expense_categories[i]}")    # add 1 to index for user intuition
+
+
 def select_category(input):
     """Selects correct category"""
     expense_categories = get_categories()
@@ -78,7 +87,7 @@ def add_expense():
     """Adds expense to expenses.json file, and updates budget"""
     expense_name = input("Enter expense name: ")
     expense_amount = float(check_for_decimal("Enter amount ($): "))
-    print(get_categories()) #need to still print category numbers
+    show_categories() 
     expense_category = validate_category_selection()
     category_selection = select_category(expense_category)
     merchant = input("Enter Merchant: ")
@@ -96,7 +105,6 @@ def add_expense():
     upload_expense(expense_dict)
 
 
-    
 
     
 
