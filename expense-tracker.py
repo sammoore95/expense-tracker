@@ -1,4 +1,6 @@
 import json
+import uuid
+from datetime import date
 from decimal import Decimal, InvalidOperation
 
 def check_for_decimal(promt):
@@ -38,6 +40,12 @@ def get_categories():
     expense_settings = load_settings()
     return expense_settings["categories"]
 
+
+def select_category(input):
+    """Selects correct category"""
+    expense_categories = get_categories()
+    return expense_categories[input-1]  # translates user input into selection
+
 def validate_category_selection():
     """Validates user input is a number in the category list, returns category selection (int)"""
     expense_categories = get_categories()
@@ -52,11 +60,17 @@ def validate_category_selection():
 
     
 def add_expense():
+    """Adds expense to expenses.json file, and updates budget"""
     expense_name = input("Enter expense name: ")
-    expense_amount = check_for_decimal("Enter amount ($)")
+    expense_amount = str(check_for_decimal("Enter amount ($)"))
     get_categories()
     expense_category = validate_category_selection()
-    # need to complete function, still needs to return expense json string, and validate proper category
+    category_selection = select_category(expense_category)
+    merchant = input("Enter Merchant: ")
+    note = input("Enter Note: ")
+    today = date.today()
+    formated_date = today.strftime("%Y-%m-%d")
 
-
-
+    expense_dict =  {"id":expense_name, "date":formated_date, "amount":expense_amount, "category":category_selection, "merchant":merchant, "note":note}
+    # still need to add sent to json file function
+    # still need to perform budget calculations
