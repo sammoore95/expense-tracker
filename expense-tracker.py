@@ -13,15 +13,16 @@ def check_for_decimal(promt):
 
 
 def check_for_int(promt):
+    """Validates user input is a whole number"""
     while True:
         user_input = input(promt)
         try:
-            value = int(user_input)
-            if value > 0:
+            value = int(user_input)     # validates user input is an integer
+            if value > 0:               # runs if user input is a positive whole number
                 return value
             else:
                 print("Please enter a whole number greater than 0")
-        except ValueError:
+        except ValueError:              # runs if user input is not an int
             print("Invalid input. Please enter a whole number")
     
 
@@ -32,12 +33,19 @@ def load_settings():
         return(expense_settings)
     
 
+def get_categories():
+    """Returns expense categories"""
+    expense_settings = load_settings()
+    return expense_settings["categories"]
+    
+
 def add_expense():
     expense_name = input("Enter expense name: ")
     expense_amount = check_for_decimal("Enter amount ($)")
+    get_categories()
     expense_category = check_for_int("Enter an expense category (number): ")
     # need to complete function, still needs to return expense json string, and validate proper category
 
 
-print(check_for_int("Please enter a number: "))
+
 
