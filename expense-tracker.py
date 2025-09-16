@@ -61,6 +61,7 @@ def validate_category_selection():
 
 
 def upload_expense(expense):
+    """Uploads new expense to expenses.json file. The variable 'expense' should be a dictionary"""
     try:
         with open("expenses.json", "r") as f:
             expense_list = json.load(f)
