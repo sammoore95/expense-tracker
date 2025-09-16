@@ -41,6 +41,23 @@ def get_categories():
     return expense_settings["categories"]
 
 
+def add_category():
+    """Adds new category to expense categories list"""
+    expense_settings = load_settings()  # loads all expense settings
+
+    expense_categories = expense_settings["categories"]     # creates list of current expense categories
+
+    new_category = input("What expense category would you like to add? ")
+
+    expense_categories.append(new_category)     # appends new category to list of current expense categories
+
+    expense_settings["categories"] = expense_categories     # applies updated categories list to the categories key in the current expense settings
+
+    # updates settings.json file with new list of categories
+    with open("settings.json", "w") as f:
+        json.dump(expense_settings, f, indent=4)
+
+
 def show_categories():
     """Prints categories and translates category indexes to inputs that will be intuitive for the user"""
     expense_categories = get_categories()
@@ -88,12 +105,12 @@ def add_expense():
     expense_name = input("Enter expense name: ")
     expense_amount = float(check_for_decimal("Enter amount ($): "))
     show_categories() 
-    expense_category = validate_category_selection()
-    category_selection = select_category(expense_category)
+    expense_category = validate_category_selection()        # validates category selection is within list of categories, returns category selection (int)
+    category_selection = select_category(expense_category)  # assigns category selection (int) to category
     merchant = input("Enter Merchant: ")
     note = input("Enter Note: ")
-    today = date.today()
-    formated_date = today.strftime("%Y-%m-%d")
+    today = date.today()                            # today's date
+    formated_date = today.strftime("%Y-%m-%d")      # formats today's date for json upload (YYYY-mm-dd)
 
     expense_dict =  {"id":expense_name, 
                      "date":formated_date, 
@@ -102,7 +119,10 @@ def add_expense():
                      "merchant":merchant, 
                      "note":note}
     
-    upload_expense(expense_dict)
+    upload_expense(expense_dict)    # uses helper function to add expense_dict dictionary to expenses.json
+
+
+
 
 
 
