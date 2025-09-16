@@ -1,0 +1,5 @@
+{
+  "currency": "USD",
+  "categories": ["Groceries","Dining","Rent","Utilities","Transport","Health","Misc"],
+  "monthly_budgets": {"Groceries": 400, "Dining": 150}
+}
