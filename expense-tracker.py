@@ -92,6 +92,10 @@ def add_expense():
                      "merchant":merchant, 
                      "note":note}
     
+    upload_expense(expense_dict)
+
+
+    
 
     
 
