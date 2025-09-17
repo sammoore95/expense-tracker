@@ -7,12 +7,10 @@
         "Utilities",
         "Transport",
         "Health",
-        "Misc",
-        "Entertainment"
+        "Misc"
     ],
     "monthly_budgets": {
         "Groceries": 400.0,
-        "Dining": 150.0,
-        "Entertainment": 500.0
+        "Dining": 150.0
     }
 }

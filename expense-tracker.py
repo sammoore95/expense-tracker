@@ -86,6 +86,20 @@ def validate_category_selection():
             print("Please enter a valid category number")
 
 
+def validate_monthly_budget_selection():
+    """Validate user input is a number in the monthly budget list, returns monthly budget selection (int)"""
+    expense_settings = load_settings()
+    monthly_budgets = expense_settings["monthly_budgets"]
+    num_of_budgets = len(monthly_budgets)
+    
+    while True:
+        user_input = check_for_int("What monthly budget would you like to delete? ")
+        if user_input <= num_of_budgets:
+            return user_input
+        else:
+            print("Please enter a valid monthly budget selection")
+
+
 def upload_expense(expense):
     """Uploads new expense to expenses.json file. The variable 'expense' should be a dictionary"""
     try:
@@ -172,4 +186,74 @@ def edit_budget():
     # updates settings.json with updated expense settings
     with open("settings.json", "w") as f:
         json.dump(expense_settings, f, indent=4)
+
+
+def delete_from_settings():
+    """Allows user to delete a category or monthly budget from settings.json"""
+    
+    # validate user selection
+    while True:
+        print("""From what settings feature would you like to delete?
+          1. Categories
+          2. Monthly Budgets""")
+        user_selection = check_for_int("Enter selection (int): ")
+        if user_selection < 3:
+            break
+        else:
+            print("Please enter a valid selection")
+
+    # delete category
+    if user_selection == 1:
+        show_categories()
+        
+        # validate user selected category (index + 1)
+        selected_category = validate_category_selection()   
+
+        expense_settings = load_settings()      # load expense settings
+        expense_categories = expense_settings["categories"] # select categories
+        expense_categories.pop(selected_category-1)     # removes user selected category using the correct index (user selection - 1)
+        
+        expense_settings["categories"] = expense_categories     # set expense category for expense settings to updated category
+        
+        # rewrites settings.json with updated expense settings
+        with open("settings.json", "w") as f:   
+            json.dump(expense_settings, f, indent=4)
+        
+        print("Category removed from settings!")
+
+    # delete monthly budget
+    if user_selection == 2:
+        expense_settings = load_settings()  # load expense settings
+        expense_budgets = expense_settings["monthly_budgets"]   # select monthly budgets
+        
+        # print numbered list of monthly budgets
+        for i, key in enumerate(expense_budgets):
+            print(i+1,". ", key)
+        
+        # validate user selected budget (index + 1)
+        selected_budget = validate_monthly_budget_selection() 
+        
+        # convert dict keys to a list so we can access by index
+        expense_budgets_keys = list(expense_budgets.keys())
+
+        selected_key = expense_budgets_keys[selected_budget - 1]    # map user selection back to key
+        expense_budgets.pop(selected_key)   # remove budget based on converted index
+
+        expense_settings["monthly_budgets"] = expense_budgets   # update expense settings with new monthly budget dict
+
+        # rewrites settings.json with updated expense settings
+        with open("settings.json", "w") as f:
+            json.dump(expense_settings, f, indent=4)
+
+        
+        
+        
+
+
+
+delete_from_settings()
+        
+
+
+        
 
