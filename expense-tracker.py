@@ -2,6 +2,8 @@ import json
 import uuid
 from datetime import date
 from decimal import Decimal, InvalidOperation
+from tabulate import tabulate
+import pandas as pd
 
 def check_for_decimal(promt):
     """Validates user input is a decimal, returns decimal"""
@@ -246,12 +248,91 @@ def delete_from_settings():
             json.dump(expense_settings, f, indent=4)
 
         
+
+def sum_expense_category(category):
+    """Helper function to return the sum of expenses for selected category"""
+    with open("expenses.json", "r") as f:
+        expenses = json.load(f)     # creates expenses
+
+    total = 0   # initialize total
+
+    # add amount value if category value == category variable
+    for i in expenses:
+        if i["category"] == category:
+            total += i["amount"]
         
+    return total    # return expense total for category
+
+
+def calc_category_budget():
+    
+    print("What category would you like to see your updated monthly budget for? ")
+    show_categories()
+    category = validate_category_selection()
+    category_selection = select_category(category)
+
+    expense_settings = load_settings()
+    monthly_budgets = expense_settings["monthly_budgets"]
+    
+    category_budget = monthly_budgets[category_selection]
+    category_expenses = sum_expense_category(category_selection)
+
+    remaining_budget =  category_budget - category_expenses
+
+    
+def show_budget_table():
+    """Create expenses and budget dataframes to perform calculations, then prints table with calculation results"""
+    
+    # load expenses.json
+    with open("expenses.json", "r") as f:
+        expenses = json.load(f)
+
+    # load settings.json
+    with open("settings.json", "r") as f:
+        settings = json.load(f)    
+
+    # budgets dict
+    budgets = settings["monthly_budgets"]
+
+    # expenses dataframe
+    df_expenses = pd.DataFrame(expenses)
+    
+    # rename dataframe column from amount to spent, must be done before converting to list below
+    df_expenses = df_expenses.rename(columns={"amount":"spent"})    
+
+    # budget dataframe
+    df_budgets = pd.DataFrame(budgets.items(), columns=["category", "budget"])
+
+    # group df_expenses dataframe by the category, then sum the amount values in the grouped categories
+    spent = df_expenses.groupby("category")["spent"].sum()
+
+    """Merges the df_budgets and spent dataframes.
+       In SQL Terms:  FROM df_budgets LEFT OUTER JOIN spent ON df_budgets.category = spent.category"""
+    df_summary = df_budgets.merge(spent, on="category", how="left")
+    
+    # calculations
+    df_summary["remaining"] = df_summary["budget"] - df_summary["spent"]    
+    df_summary["percent_used"] = ((df_summary["spent"] / df_summary["budget"]) * 100).round(2)
+
+    # copies df_summary to a new dataframe that will be used for formatting and display, ensure df_summary remains safe
+    df_summary_fmt = df_summary.copy()
+
+    # format money columns
+    money_cols = ["budget", "spent", "remaining"]
+    df_summary_fmt[money_cols] = df_summary_fmt[money_cols].applymap(lambda x: f"${x:,.2f}")
+
+    # format percentage columns
+    df_summary_fmt["percent_used"] = df_summary_fmt["percent_used"].astype(float).map(lambda x: f"{x:.2f}%")
+
+    # print copy of dataframe summary that is formatted correctly.
+    print(tabulate(df_summary_fmt, headers="keys", tablefmt="fancy_grid", showindex=False))
+
+
         
 
 
 
-delete_from_settings()
+
         
 
 

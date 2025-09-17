@@ -11,6 +11,11 @@
     ],
     "monthly_budgets": {
         "Groceries": 400.0,
-        "Dining": 150.0
+        "Dining": 150.0,
+        "Rent": 3000,
+        "Utilities": 300.0,
+        "Transport": 250,
+        "Health": 200.0,
+        "Misc": 300.0
     }
 }

@@ -2,7 +2,7 @@
     {
         "id": "groceries_001",
         "date": "2025-09-10",
-        "amount": 85.50,
+        "amount": 85.5,
         "category": "Groceries",
         "merchant": "supermarket",
         "note": "weekly groceries"
@@ -18,7 +18,7 @@
     {
         "id": "rent_001",
         "date": "2025-09-01",
-        "amount": 1200.00,
+        "amount": 1200.0,
         "category": "Rent",
         "merchant": "landlord",
         "note": "monthly rent"
@@ -26,7 +26,7 @@
     {
         "id": "utilities_001",
         "date": "2025-09-05",
-        "amount": 95.20,
+        "amount": 95.2,
         "category": "Utilities",
         "merchant": "electric company",
         "note": "electric bill"
@@ -34,7 +34,7 @@
     {
         "id": "transport_001",
         "date": "2025-09-08",
-        "amount": 45.00,
+        "amount": 45.0,
         "category": "Transport",
         "merchant": "gas station",
         "note": "fuel for car"
@@ -42,7 +42,7 @@
     {
         "id": "health_001",
         "date": "2025-09-14",
-        "amount": 60.00,
+        "amount": 60.0,
         "category": "Health",
         "merchant": "pharmacy",
         "note": "prescription refill"
@@ -50,9 +50,65 @@
     {
         "id": "misc_001",
         "date": "2025-09-16",
-        "amount": 17.00,
+        "amount": 17.0,
         "category": "Misc",
         "merchant": "movie theater",
         "note": "went to movies"
+    },
+    {
+        "id": "groceries_002",
+        "date": "2025-09-17",
+        "amount": 52.3,
+        "category": "Groceries",
+        "merchant": "farmers market",
+        "note": "fresh produce"
+    },
+    {
+        "id": "dining_002",
+        "date": "2025-09-15",
+        "amount": 22.1,
+        "category": "Dining",
+        "merchant": "coffee shop",
+        "note": "lunch and coffee"
+    },
+    {
+        "id": "rent_002",
+        "date": "2025-08-01",
+        "amount": 1200.0,
+        "category": "Rent",
+        "merchant": "landlord",
+        "note": "previous month rent"
+    },
+    {
+        "id": "utilities_002",
+        "date": "2025-09-06",
+        "amount": 40.75,
+        "category": "Utilities",
+        "merchant": "water company",
+        "note": "water bill"
+    },
+    {
+        "id": "transport_002",
+        "date": "2025-09-09",
+        "amount": 15.25,
+        "category": "Transport",
+        "merchant": "bus service",
+        "note": "bus tickets"
+    },
+    {
+        "id": "health_002",
+        "date": "2025-09-11",
+        "amount": 120.0,
+        "category": "Health",
+        "merchant": "clinic",
+        "note": "doctor visit"
+    },
+    {
+        "id": "misc_002",
+        "date": "2025-09-13",
+        "amount": 12.5,
+        "category": "Misc",
+        "merchant": "bookstore",
+        "note": "bought a book"
     }
 ]
