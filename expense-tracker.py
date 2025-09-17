@@ -148,10 +148,28 @@ def add_budget():
         json.dump(expense_settings, f, indent=4)
 
     
+def edit_budget():
+    """Allows user to update monthly budget category value"""
+    expense_settings = load_settings()      #loads settings.json
+    monthly_budget = expense_settings["monthly_budgets"]    # selects the monthly budgets dictionary in expense settings
 
+    # validates the user is selecting a current budget category
+    while True:
+        show_budget()
+        budget_selection = input("What budget category would you like to edit? ")
+        if budget_selection in monthly_budget.keys():
+            break
+        else:
+            print("Please enter a valid existing category")
 
+    # validates the user is inputing a float to update the selected category to
+    new_budget = float(check_for_decimal(f"What is the new budget for {budget_selection}?: "))
 
+    monthly_budget[budget_selection] = new_budget   # updates the selected budget category to the new value
 
-    
+    expense_settings["monthly_budgets"] = monthly_budget    # sets the monthly budgets dictionary in expense settings to the updated monthly values dictionary
 
+    # updates settings.json with updated expense settings
+    with open("settings.json", "w") as f:
+        json.dump(expense_settings, f, indent=4)
 
