@@ -122,6 +122,32 @@ def add_expense():
     upload_expense(expense_dict)    # uses helper function to add expense_dict dictionary to expenses.json
 
 
+def show_budget():
+    """Prints Monthly budgets"""
+    expense_settings = load_settings()
+    monthly_budget = expense_settings["monthly_budgets"]
+    print("Monthly Budgets:")
+    for key, value in monthly_budget.items():
+        print(key,":",value)
+
+
+def add_budget():
+    """Adds new monthly budget category and value to settings.json"""
+    expense_settings = load_settings()      # loads all expense settings
+    monthly_budget = expense_settings["monthly_budgets"]    # selects the monthly budgets dictionary in expense settings
+
+    budget_category = input("What budget category would you like to add? ")
+    category_value = float(check_for_decimal("What is your monthly budget for this category? "))
+
+    monthly_budget[budget_category] = category_value    # adds new monthly budget category and value to current dictionary of monthly budgets
+
+    expense_settings["monthly_budgets"] = monthly_budget    # appends new dictionary of monthly budgets to expense settings
+
+    # updates settings.json with updated expense settings
+    with open("settings.json", "w") as f:
+        json.dump(expense_settings, f, indent=4)
+
+    
 
 
 
