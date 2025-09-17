@@ -1,8 +1,56 @@
 [
     {
-        "id": "movie ticket",
+        "id": "groceries_001",
+        "date": "2025-09-10",
+        "amount": 85.50,
+        "category": "Groceries",
+        "merchant": "supermarket",
+        "note": "weekly groceries"
+    },
+    {
+        "id": "dining_001",
+        "date": "2025-09-12",
+        "amount": 32.75,
+        "category": "Dining",
+        "merchant": "pizza place",
+        "note": "dinner with friends"
+    },
+    {
+        "id": "rent_001",
+        "date": "2025-09-01",
+        "amount": 1200.00,
+        "category": "Rent",
+        "merchant": "landlord",
+        "note": "monthly rent"
+    },
+    {
+        "id": "utilities_001",
+        "date": "2025-09-05",
+        "amount": 95.20,
+        "category": "Utilities",
+        "merchant": "electric company",
+        "note": "electric bill"
+    },
+    {
+        "id": "transport_001",
+        "date": "2025-09-08",
+        "amount": 45.00,
+        "category": "Transport",
+        "merchant": "gas station",
+        "note": "fuel for car"
+    },
+    {
+        "id": "health_001",
+        "date": "2025-09-14",
+        "amount": 60.00,
+        "category": "Health",
+        "merchant": "pharmacy",
+        "note": "prescription refill"
+    },
+    {
+        "id": "misc_001",
         "date": "2025-09-16",
-        "amount": 17.0,
+        "amount": 17.00,
         "category": "Misc",
         "merchant": "movie theater",
         "note": "went to movies"
