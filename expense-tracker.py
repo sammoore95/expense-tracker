@@ -247,39 +247,7 @@ def delete_from_settings():
         with open("settings.json", "w") as f:
             json.dump(expense_settings, f, indent=4)
 
-        
-
-def sum_expense_category(category):
-    """Helper function to return the sum of expenses for selected category"""
-    with open("expenses.json", "r") as f:
-        expenses = json.load(f)     # creates expenses
-
-    total = 0   # initialize total
-
-    # add amount value if category value == category variable
-    for i in expenses:
-        if i["category"] == category:
-            total += i["amount"]
-        
-    return total    # return expense total for category
-
-
-def calc_category_budget():
-    
-    print("What category would you like to see your updated monthly budget for? ")
-    show_categories()
-    category = validate_category_selection()
-    category_selection = select_category(category)
-
-    expense_settings = load_settings()
-    monthly_budgets = expense_settings["monthly_budgets"]
-    
-    category_budget = monthly_budgets[category_selection]
-    category_expenses = sum_expense_category(category_selection)
-
-    remaining_budget =  category_budget - category_expenses
-
-    
+          
 def show_budget_table():
     """Create expenses and budget dataframes to perform calculations, then prints table with calculation results"""
     
@@ -325,11 +293,81 @@ def show_budget_table():
     df_summary_fmt["percent_used"] = df_summary_fmt["percent_used"].astype(float).map(lambda x: f"{x:.2f}%")
 
     # print copy of dataframe summary that is formatted correctly.
-    print(tabulate(df_summary_fmt, headers="keys", tablefmt="fancy_grid", showindex=False))
+    print(tabulate(df_summary_fmt, headers="keys", tablefmt="grid", showindex=False))
 
 
-        
+def show_category_summary_table():
+    """Allows user to select a category,
+       then prints a table of all the expenses for the category,
+       and prints another table of the summary of expenses for the category"""
+    show_categories()
+    category_selection = select_category(validate_category_selection())     # returns the name of selected category
 
+    # open expenses.json file
+    with open("expenses.json", "r") as f:
+        expenses = json.load(f)
+
+    # initialize expenses dict
+    category_expenses = []
+    
+    # adds expense dicts with the selected category to the category_expenses list
+    for i in expenses:
+        if i["category"] == category_selection:
+            category_expenses.append(i)
+
+    # creates expenses dataframe
+    df_category_expenses = pd.DataFrame(category_expenses)
+
+    # change datafram column name from "amount" to "spent"
+    df_category_expenses = df_category_expenses.rename(columns={"amount":"spent"})
+
+    # copy the original dataframe to a new dataframe for formatting and printing
+    df_category_expenses_fmt = df_category_expenses.copy()
+    
+    # format "spent" column into money formatting
+    df_category_expenses_fmt["spent"] = df_category_expenses_fmt["spent"].astype(float).map(lambda x: f"${x:,.2f}")
+
+    # print tabulated expense dataframe
+    print("======== Category Expenses ========")
+    print(tabulate(df_category_expenses_fmt, headers="keys", tablefmt="grid", showindex=False))
+
+    # copies data to new dataframe from the original category_expesnes dataframe
+    df_category_expenses_summary = df_category_expenses.copy()
+
+    # reformates the df_category_expenses_summary to only have 1 row of the selected category
+    df_category_expenses_summary = pd.DataFrame(df_category_expenses_summary["category"].unique(), columns=["category"])
+
+    # creates aggregation table to hold the sum and average aggregation from the original df_category_expenses dataframe, aggregated on category
+    df_category_expenses_agg = df_category_expenses.groupby("category")["spent"].agg(total_spent="sum", avg="mean")
+
+    # format "total_spent" column into money formatting
+    df_category_expenses_agg["total_spent"] = df_category_expenses_agg["total_spent"].astype(float).map(lambda x: f"${x:,.2f}")
+
+    # merges the df_category_expenses_agg dataframe on the df_category_expenses_summary by the category
+    df_category_expenses_summary = df_category_expenses_summary.merge(df_category_expenses_agg, on="category", how="left")
+
+    # creates a new dataframe called df_max_spent and creates a max_spent column to be merged into the df_category_expenses_agg dataframe
+    df_max_spent = df_category_expenses.loc[[df_category_expenses["spent"].idxmax()]]   # finds the id of the max value in the spent column of df_category_expenses, and returns a new dataframe of the whole row
+    df_max_spent["spent"] = df_max_spent["spent"].astype(float).map(lambda x: f"${x:,.2f}") # formats the spent column into money formatting
+    df_max_spent["max_spent"] = df_max_spent["id"] + ": " + df_max_spent["spent"].astype(str)   # creates a new row called max_spent in the df_max_spent dataframe that combines the id and the max spent value
+
+    # merges the max_spent column from df_max_spent dataframe to the df_category_expenses_summary dataframe using category
+    df_category_expenses_summary = df_category_expenses_summary.merge(df_max_spent[["category", "max_spent"]], on="category", how="left")
+
+    # creates a new dataframe called df_min_spent and creates a min_spent column to be merged into the df_category_expenses_agg datafram
+    df_min_spent = df_category_expenses.loc[[df_category_expenses["spent"].idxmin()]]   # finds the id of the min value in the spent column of df_category_expenses, and returns a new dataframe of the whole row
+    df_min_spent["spent"] = df_min_spent["spent"].astype(float).map(lambda x: f"${x:,.2f}") # formats the spent column into money formatting
+    df_min_spent["min_spent"] = df_min_spent["id"] + ": " + df_min_spent["spent"].astype(str)   # creates a new row called min_spent in the df_min_spent dataframe that combines the id and the max spent value
+    
+    # merges the min_spent column from df_min_spent dataframe to the df_category_expenses_summary dataframe using category
+    df_category_expenses_summary = df_category_expenses_summary.merge(df_min_spent[["category", "min_spent"]], on="category", how="left")
+
+    # print tabulated category summary
+    print("======== Category Summary ========")
+    print(tabulate(df_category_expenses_summary, headers="keys", tablefmt="grid", showindex=False))
+
+
+    
 
 
 

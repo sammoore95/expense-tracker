@@ -1,114 +1,386 @@
 [
     {
-        "id": "groceries_001",
-        "date": "2025-09-10",
-        "amount": 85.5,
+        "id": "groceries_wholefoods_weekly",
+        "date": "2025-09-17",
+        "amount": 54.3,
         "category": "Groceries",
-        "merchant": "supermarket",
-        "note": "weekly groceries"
+        "merchant": "Whole Foods",
+        "note": "weekly produce and bread"
     },
     {
-        "id": "dining_001",
-        "date": "2025-09-12",
-        "amount": 32.75,
+        "id": "dining_coffee_morning",
+        "date": "2025-09-17",
+        "amount": 11.25,
         "category": "Dining",
-        "merchant": "pizza place",
+        "merchant": "Starbucks",
+        "note": "morning coffee and bagel"
+    },
+    {
+        "id": "transport_subway_morning",
+        "date": "2025-09-17",
+        "amount": 2.75,
+        "category": "Transport",
+        "merchant": "Metro",
+        "note": "subway fare"
+    },
+    {
+        "id": "utilities_electric_sep",
+        "date": "2025-09-17",
+        "amount": 65.4,
+        "category": "Utilities",
+        "merchant": "Electric Co.",
+        "note": "monthly electricity bill"
+    },
+    {
+        "id": "misc_dropbox_cloud",
+        "date": "2025-09-17",
+        "amount": 12.99,
+        "category": "Misc",
+        "merchant": "Dropbox",
+        "note": "cloud storage subscription"
+    },
+    {
+        "id": "dining_chipotle_lunch",
+        "date": "2025-09-17",
+        "amount": 18.9,
+        "category": "Dining",
+        "merchant": "Chipotle",
+        "note": "lunch burrito bowl"
+    },
+    {
+        "id": "health_cvs_vitamins",
+        "date": "2025-09-17",
+        "amount": 32.0,
+        "category": "Health",
+        "merchant": "CVS Pharmacy",
+        "note": "vitamins and cough drops"
+    },
+    {
+        "id": "groceries_traderjoes_midweek",
+        "date": "2025-09-17",
+        "amount": 27.85,
+        "category": "Groceries",
+        "merchant": "Trader Joe's",
+        "note": "milk, cereal, fruit"
+    },
+    {
+        "id": "dining_panera_snack",
+        "date": "2025-09-17",
+        "amount": 8.75,
+        "category": "Dining",
+        "merchant": "Panera Bread",
+        "note": "afternoon snack"
+    },
+    {
+        "id": "transport_uber_clientmeeting",
+        "date": "2025-09-17",
+        "amount": 17.6,
+        "category": "Transport",
+        "merchant": "Uber",
+        "note": "ride to client meeting"
+    },
+    {
+        "id": "rent_sep2025",
+        "date": "2025-09-17",
+        "amount": 1350.0,
+        "category": "Rent",
+        "merchant": "Sunset Apartments",
+        "note": "monthly rent payment"
+    },
+    {
+        "id": "utilities_water_sep",
+        "date": "2025-09-17",
+        "amount": 45.7,
+        "category": "Utilities",
+        "merchant": "Water Service",
+        "note": "monthly water bill"
+    },
+    {
+        "id": "dining_olivegarden_dinner",
+        "date": "2025-09-17",
+        "amount": 23.1,
+        "category": "Dining",
+        "merchant": "Olive Garden",
         "note": "dinner with friends"
     },
     {
-        "id": "rent_001",
-        "date": "2025-09-01",
-        "amount": 1200.0,
-        "category": "Rent",
-        "merchant": "landlord",
-        "note": "monthly rent"
-    },
-    {
-        "id": "utilities_001",
-        "date": "2025-09-05",
-        "amount": 95.2,
-        "category": "Utilities",
-        "merchant": "electric company",
-        "note": "electric bill"
-    },
-    {
-        "id": "transport_001",
-        "date": "2025-09-08",
-        "amount": 45.0,
-        "category": "Transport",
-        "merchant": "gas station",
-        "note": "fuel for car"
-    },
-    {
-        "id": "health_001",
-        "date": "2025-09-14",
-        "amount": 60.0,
-        "category": "Health",
-        "merchant": "pharmacy",
-        "note": "prescription refill"
-    },
-    {
-        "id": "misc_001",
-        "date": "2025-09-16",
-        "amount": 17.0,
-        "category": "Misc",
-        "merchant": "movie theater",
-        "note": "went to movies"
-    },
-    {
-        "id": "groceries_002",
+        "id": "misc_amazon_phonecharger",
         "date": "2025-09-17",
-        "amount": 52.3,
-        "category": "Groceries",
-        "merchant": "farmers market",
-        "note": "fresh produce"
-    },
-    {
-        "id": "dining_002",
-        "date": "2025-09-15",
-        "amount": 22.1,
-        "category": "Dining",
-        "merchant": "coffee shop",
-        "note": "lunch and coffee"
-    },
-    {
-        "id": "rent_002",
-        "date": "2025-08-01",
-        "amount": 1200.0,
-        "category": "Rent",
-        "merchant": "landlord",
-        "note": "previous month rent"
-    },
-    {
-        "id": "utilities_002",
-        "date": "2025-09-06",
-        "amount": 40.75,
-        "category": "Utilities",
-        "merchant": "water company",
-        "note": "water bill"
-    },
-    {
-        "id": "transport_002",
-        "date": "2025-09-09",
-        "amount": 15.25,
-        "category": "Transport",
-        "merchant": "bus service",
-        "note": "bus tickets"
-    },
-    {
-        "id": "health_002",
-        "date": "2025-09-11",
-        "amount": 120.0,
-        "category": "Health",
-        "merchant": "clinic",
-        "note": "doctor visit"
-    },
-    {
-        "id": "misc_002",
-        "date": "2025-09-13",
-        "amount": 12.5,
+        "amount": 29.99,
         "category": "Misc",
-        "merchant": "bookstore",
-        "note": "bought a book"
+        "merchant": "Amazon",
+        "note": "phone charger"
+    },
+    {
+        "id": "health_walgreens_firstaid",
+        "date": "2025-09-17",
+        "amount": 10.5,
+        "category": "Health",
+        "merchant": "Walgreens",
+        "note": "bandages and sanitizer"
+    },
+    {
+        "id": "dining_tacobell_quickdinner",
+        "date": "2025-09-17",
+        "amount": 6.4,
+        "category": "Dining",
+        "merchant": "Taco Bell",
+        "note": "quick dinner"
+    },
+    {
+        "id": "groceries_aldi_basics",
+        "date": "2025-09-17",
+        "amount": 39.1,
+        "category": "Groceries",
+        "merchant": "Aldi",
+        "note": "bread, meat, veggies"
+    },
+    {
+        "id": "transport_parking_hourly",
+        "date": "2025-09-17",
+        "amount": 3.0,
+        "category": "Transport",
+        "merchant": "Parking Garage",
+        "note": "hourly parking fee"
+    },
+    {
+        "id": "utilities_gas_sep",
+        "date": "2025-09-17",
+        "amount": 110.0,
+        "category": "Utilities",
+        "merchant": "Gas Company",
+        "note": "monthly heating bill"
+    },
+    {
+        "id": "misc_postoffice_shipping",
+        "date": "2025-09-17",
+        "amount": 7.5,
+        "category": "Misc",
+        "merchant": "Post Office",
+        "note": "package shipping"
+    },
+    {
+        "id": "dining_shakeshack_burger",
+        "date": "2025-09-17",
+        "amount": 14.2,
+        "category": "Dining",
+        "merchant": "Shake Shack",
+        "note": "burger and fries"
+    },
+    {
+        "id": "health_gym_sep",
+        "date": "2025-09-17",
+        "amount": 45.0,
+        "category": "Health",
+        "merchant": "Anytime Fitness",
+        "note": "monthly gym fee"
+    },
+    {
+        "id": "groceries_costco_snacks",
+        "date": "2025-09-17",
+        "amount": 22.9,
+        "category": "Groceries",
+        "merchant": "Costco",
+        "note": "snacks and drinks"
+    },
+    {
+        "id": "dining_subway_sandwich",
+        "date": "2025-09-17",
+        "amount": 12.3,
+        "category": "Dining",
+        "merchant": "Subway",
+        "note": "sandwich lunch"
+    },
+    {
+        "id": "transport_lyft_home",
+        "date": "2025-09-17",
+        "amount": 20.5,
+        "category": "Transport",
+        "merchant": "Lyft",
+        "note": "ride home from work"
+    },
+    {
+        "id": "misc_charity_donation",
+        "date": "2025-09-17",
+        "amount": 25.0,
+        "category": "Misc",
+        "merchant": "Charity Org",
+        "note": "donation"
+    },
+    {
+        "id": "dining_dominos_pizza",
+        "date": "2025-09-17",
+        "amount": 9.99,
+        "category": "Dining",
+        "merchant": "Domino's",
+        "note": "pizza dinner"
+    },
+    {
+        "id": "groceries_kroger_weekly",
+        "date": "2025-09-17",
+        "amount": 47.65,
+        "category": "Groceries",
+        "merchant": "Kroger",
+        "note": "weekly groceries"
+    },
+    {
+        "id": "utilities_internet_sep",
+        "date": "2025-09-17",
+        "amount": 75.9,
+        "category": "Utilities",
+        "merchant": "Internet Provider",
+        "note": "monthly Wi-Fi bill"
+    },
+    {
+        "id": "health_gnc_protein",
+        "date": "2025-09-17",
+        "amount": 15.2,
+        "category": "Health",
+        "merchant": "GNC",
+        "note": "protein bars"
+    },
+    {
+        "id": "transport_gas_refill",
+        "date": "2025-09-17",
+        "amount": 30.0,
+        "category": "Transport",
+        "merchant": "Shell Gas",
+        "note": "gas refill"
+    },
+    {
+        "id": "dining_cheesecake_dinner",
+        "date": "2025-09-17",
+        "amount": 19.8,
+        "category": "Dining",
+        "merchant": "Cheesecake Factory",
+        "note": "dinner with family"
+    },
+    {
+        "id": "misc_spotify_music",
+        "date": "2025-09-17",
+        "amount": 19.99,
+        "category": "Misc",
+        "merchant": "Spotify",
+        "note": "music subscription"
+    },
+    {
+        "id": "groceries_7eleven_snacks",
+        "date": "2025-09-17",
+        "amount": 18.4,
+        "category": "Groceries",
+        "merchant": "7-Eleven",
+        "note": "snacks and drinks"
+    },
+    {
+        "id": "dining_wendys_combo",
+        "date": "2025-09-17",
+        "amount": 5.6,
+        "category": "Dining",
+        "merchant": "Wendy's",
+        "note": "burger combo"
+    },
+    {
+        "id": "utilities_cellphone_sep",
+        "date": "2025-09-17",
+        "amount": 89.99,
+        "category": "Utilities",
+        "merchant": "Cell Carrier",
+        "note": "monthly phone bill"
+    },
+    {
+        "id": "health_dental_visit",
+        "date": "2025-09-17",
+        "amount": 150.0,
+        "category": "Health",
+        "merchant": "Dental Clinic",
+        "note": "cleaning appointment"
+    },
+    {
+        "id": "misc_bestbuy_headphones",
+        "date": "2025-09-17",
+        "amount": 80.0,
+        "category": "Misc",
+        "merchant": "Best Buy",
+        "note": "headphones"
+    },
+    {
+        "id": "dining_dunkin_breakfast",
+        "date": "2025-09-17",
+        "amount": 7.8,
+        "category": "Dining",
+        "merchant": "Dunkin'",
+        "note": "coffee and donut"
+    },
+    {
+        "id": "groceries_safeway_meat",
+        "date": "2025-09-17",
+        "amount": 36.55,
+        "category": "Groceries",
+        "merchant": "Safeway",
+        "note": "meat and frozen food"
+    },
+    {
+        "id": "transport_subway_evening",
+        "date": "2025-09-17",
+        "amount": 2.75,
+        "category": "Transport",
+        "merchant": "Metro",
+        "note": "train fare"
+    },
+    {
+        "id": "dining_bww_dinner",
+        "date": "2025-09-17",
+        "amount": 21.5,
+        "category": "Dining",
+        "merchant": "Buffalo Wild Wings",
+        "note": "dinner and drinks"
+    },
+    {
+        "id": "misc_applestore_accessories",
+        "date": "2025-09-17",
+        "amount": 199.99,
+        "category": "Misc",
+        "merchant": "Apple Store",
+        "note": "accessories"
+    },
+    {
+        "id": "groceries_meijer_pantry",
+        "date": "2025-09-17",
+        "amount": 25.75,
+        "category": "Groceries",
+        "merchant": "Meijer",
+        "note": "pantry restock"
+    },
+    {
+        "id": "dining_fiveguys_lunch",
+        "date": "2025-09-17",
+        "amount": 13.2,
+        "category": "Dining",
+        "merchant": "Five Guys",
+        "note": "burger lunch"
+    },
+    {
+        "id": "transport_taxi_airport",
+        "date": "2025-09-17",
+        "amount": 16.8,
+        "category": "Transport",
+        "merchant": "Taxi",
+        "note": "airport drop-off"
+    },
+    {
+        "id": "utilities_trash_sep",
+        "date": "2025-09-17",
+        "amount": 60.0,
+        "category": "Utilities",
+        "merchant": "Trash Service",
+        "note": "monthly garbage pickup"
+    },
+    {
+        "id": "health_riteaid_allergy",
+        "date": "2025-09-17",
+        "amount": 22.4,
+        "category": "Health",
+        "merchant": "Rite Aid",
+        "note": "allergy meds"
     }
 ]
