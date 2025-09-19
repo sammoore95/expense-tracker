@@ -1,5 +1,4 @@
 import json
-import uuid
 from datetime import date
 from decimal import Decimal, InvalidOperation
 from tabulate import tabulate
