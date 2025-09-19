@@ -136,6 +136,7 @@ def add_expense():
                      "note":note}
     
     upload_expense(expense_dict)    # uses helper function to add expense_dict dictionary to expenses.json
+    print(f'Expense for {expense_name} added!')
 
 
 def show_budget():
@@ -367,8 +368,98 @@ def show_category_summary_table():
     print(tabulate(df_category_expenses_summary, headers="keys", tablefmt="grid", showindex=False))
 
 
+def show_expenses():
+    """Show tabulated dataframe of expense.json file"""
+    with open("expenses.json", "r") as f:
+        expenses = json.load(f)
+
+    # create dataframe of expenses.json
+    df_expenses = pd.DataFrame(expenses)
+
+    # format amount column to money formatting
+    df_expenses["amount"] = df_expenses["amount"].apply(lambda x: f"${x:,.2f}")
+
+    # print tabulated expenses
+    print("===== Expenses ======")
+    print(tabulate(df_expenses, headers="keys", tablefmt="grid"))
     
 
+def expense_tracker():
+    """Allows for expense budget option selection"""
+    while True:
+        while True:
+            print("""===== Expense Tracker ======
+                1. Add Expense
+                2. List Expenses
+                3. Reports and Analytics
+                4. Categories and Budgets
+                5. Exit""")
+            user_selection = check_for_int("What option would you like to select? (int): ")
+            if user_selection <= 5:
+                break
+            else:
+                print("Please select a valid integer from the list")
+
+        if user_selection == 1:
+            num_of_expenses = check_for_int("How many expenses would you like to add? (int): ")
+            for i in range(num_of_expenses):
+                add_expense()
+            expense_tracker()
+        
+        if user_selection == 2:
+            show_expenses()
+            expense_tracker()
+
+        if user_selection == 3:
+            print("""===== Reports =====
+                1. Show Monthly Budget Summary
+                2. Show Category Budget Summary""")
+            while True:
+                report_selection = check_for_int("What option would you like to select? (int): ")
+                if report_selection <= 2:
+                    break
+                else:
+                    print("Please enter a valid option from the list")
+
+            if report_selection == 1:
+                show_budget_table()
+            elif report_selection == 2:
+                show_category_summary_table()
+            expense_tracker()
+
+        if user_selection == 4:
+            print("""===== Budget Settings =====
+                1. Add Budget
+                2. Edit Budget
+                3. Delete From Settings""")
+            while True:
+                settings_selection = check_for_int("What option would you like to select? (int):")
+                if settings_selection <= 3:
+                    break
+                else:
+                    print("Please enter a valid option from the list")
+
+            if settings_selection == 1:
+                add_budget()
+                print("Budget Added!")
+                expense_tracker()
+            
+            if settings_selection == 2:
+                edit_budget()
+                print("Budget edited!")
+                expense_tracker()
+
+            if settings_selection == 3:
+                delete_from_settings()
+                print("Settings Deleted!")
+
+        if user_selection == 5:
+            print("Exiting Budget")
+            break
+            
+
+
+expense_tracker()
 
 
         

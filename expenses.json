@@ -382,5 +382,85 @@
         "category": "Health",
         "merchant": "Rite Aid",
         "note": "allergy meds"
+    },
+    {
+        "id": "Test Expense",
+        "date": "2025-09-19",
+        "amount": 1234.0,
+        "category": "Misc",
+        "merchant": "Test Merchant",
+        "note": "Test for add expense function"
+    },
+    {
+        "id": "Test expense 001",
+        "date": "2025-09-19",
+        "amount": 100.0,
+        "category": "Misc",
+        "merchant": "Testing",
+        "note": "testing for looping through number of expenses to add, loop 1"
+    },
+    {
+        "id": "Test expense 002",
+        "date": "2025-09-19",
+        "amount": 200.0,
+        "category": "Misc",
+        "merchant": "9",
+        "note": "testing for looping through number of expenses to add, loop 2"
+    },
+    {
+        "id": "Test expense 003",
+        "date": "2025-09-19",
+        "amount": 300.0,
+        "category": "Misc",
+        "merchant": "testing",
+        "note": "testing for looping through the number of expenses to add, loop 3"
+    },
+    {
+        "id": "Too many loops",
+        "date": "2025-09-19",
+        "amount": 0.0,
+        "category": "Misc",
+        "merchant": "Testing",
+        "note": "Looped to 4, should have only been three"
+    },
+    {
+        "id": "test 2 expense 1",
+        "date": "2025-09-19",
+        "amount": 100.0,
+        "category": "Misc",
+        "merchant": "Testing 2",
+        "note": "loop 1"
+    },
+    {
+        "id": "test 2 expense 1",
+        "date": "2025-09-19",
+        "amount": 200.0,
+        "category": "Misc",
+        "merchant": "testing 2",
+        "note": "testing 2"
+    },
+    {
+        "id": "too many loops",
+        "date": "2025-09-19",
+        "amount": 400.0,
+        "category": "Misc",
+        "merchant": "testing",
+        "note": "test 2 loop 3"
+    },
+    {
+        "id": "test 1",
+        "date": "2025-09-19",
+        "amount": 100.0,
+        "category": "Misc",
+        "merchant": "testing 3",
+        "note": "loop 1"
+    },
+    {
+        "id": "test 1",
+        "date": "2025-09-19",
+        "amount": 200.0,
+        "category": "Misc",
+        "merchant": "testing 3",
+        "note": "testing 3"
     }
 ]
